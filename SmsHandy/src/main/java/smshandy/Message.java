@@ -1,6 +1,7 @@
 package smshandy;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Message {
     private String content;
@@ -56,5 +57,22 @@ public class Message {
 
     public void setTo(String to) {
         this.to = to;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Message message = (Message) o;
+        return Objects.equals(content, message.content) &&
+                Objects.equals(date, message.date) &&
+                Objects.equals(from, message.from) &&
+                Objects.equals(to, message.to);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(content, date, from, to);
     }
 }

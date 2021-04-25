@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="SmsHandy" />
+        <module name="SmsHandy_Gruppe_03" />
       </profile>
     </annotationProcessing>
   </component>
