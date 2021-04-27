@@ -12,6 +12,8 @@ public class Message {
     }
 
     public Message(String content,String to, String from, Date date) {
+        if (from == null)
+            throw new IllegalArgumentException("The sender's number must be set");
         this.content = content;
         this.date = date;
         this.from = from;

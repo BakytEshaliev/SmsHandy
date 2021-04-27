@@ -22,9 +22,13 @@ public class Provider {
 
 
     public void register(SmsHandy smsHandy){
+        if (smsHandy == null)
+            throw new IllegalArgumentException("The phone must be set");
         subscriber.put(smsHandy.getNumber(), smsHandy);
     }
     public void deposit(String number, int amount){
+        if(number == null)
+            throw new IllegalArgumentException("The number must be set");
         if (credits.containsKey(number)) {
             Integer balance = credits.get(number);
             credits.put(number, balance + amount);
@@ -33,23 +37,19 @@ public class Provider {
         }
     }
     public boolean send(Message message){
+        if (message == null)
+            throw new IllegalArgumentException("The message must be set");
+
 
         String sender = message.getFrom();
         String receiver = message.getTo();
 
         SmsHandy senderHandy = subscriber.get(sender);
+        Provider providerFor = findProviderFor(receiver);
 
-        if (receiver.equals("*101#")){
-
-            Integer balance = credits.get(sender);
-            Message balanceMsg = new Message("Balance on your phone: " + balance, sender, "*101#", new Date());
-            senderHandy.receiveSms(balanceMsg);
-
-            return true;
-        }else if(receiver != null && !receiver.isBlank() &&
-                senderHandy.getProvider() != null && findProviderFor(receiver) != null){
+        if(senderHandy.getProvider() != null &&  providerFor != null){
             senderHandy.addToSentMessages(message);
-            SmsHandy receiverHandy = findProviderFor(receiver).subscriber.get(receiver);
+            SmsHandy receiverHandy = providerFor.subscriber.get(receiver);
             receiverHandy.receiveSms(message);
             senderHandy.payForSms();
 

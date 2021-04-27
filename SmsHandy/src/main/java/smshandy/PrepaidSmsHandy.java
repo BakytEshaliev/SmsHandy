@@ -14,14 +14,14 @@ public class PrepaidSmsHandy extends SmsHandy{
     }
 
     public void deposit(int amount){
+        if (amount <= 0)
+            throw new IllegalArgumentException("You can not put a negative or zero amount on the deposit");
         getProvider().deposit(getNumber(), amount);
     }
 
     public void payForSms() {
-        if (canSendSms()) {
-            int credit = getProvider().getCreditForSMsHandy(getNumber());
-            getProvider().getCredits().put(getNumber(), credit - COST_PER_SMS);
-        }
+        int credit = getProvider().getCreditForSMsHandy(getNumber());
+        getProvider().getCredits().put(getNumber(), credit - COST_PER_SMS);
     }
 
 

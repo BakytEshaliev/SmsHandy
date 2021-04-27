@@ -14,7 +14,12 @@ public abstract class SmsHandy {
     private List<Message> received;
 
     public SmsHandy(String number, Provider provider,String name) {
-        this.number = number;
+        //for simplicity, the number can start with + and following 9-13 numbers.
+        if(number == null || !number.trim().matches("^(\\+?)([0-9]){7,13}"))
+            throw new IllegalArgumentException("The number is incorrect");
+        if (provider == null)
+            throw new IllegalArgumentException("The Provider must be set");
+        this.number = number.trim();
         this.provider = provider;
         provider.register(this);
         this.name = name;
@@ -22,15 +27,22 @@ public abstract class SmsHandy {
         this.received = new ArrayList<>();
     }
     public void sendSms(String to,String content){
+        if (to == null || to.isBlank())
+            throw new IllegalArgumentException("The recipient must be set");
+
         //cant send messages to yourself
         if (to.equals(getNumber()))
             return;
-        if (canSendSms()) {
+
+        if (to.equals("*101#")){
+            Integer balance = getProvider().getCredits().get(getNumber());
+            System.out.printf("<---The balance on your phone: %d--->%n", balance);
+        }else if (canSendSms()) {
             Message message = new Message(content, to, number, new Date());
             if (provider.send(message))
                 System.out.println("<---Message sent successfully--->\n");
             else
-                System.out.println("<---You can't send a message to a user with a different provider--->\n");
+                System.out.println("<---You can't send sms--->\n");
         }else
             System.out.println("<---You don't have enough funds in your account--->\n");
     }
@@ -39,6 +51,8 @@ public abstract class SmsHandy {
     public abstract void payForSms();
 
     public void sendSmsDirect(SmsHandy peer, String content){
+        if (peer == null)
+            throw new IllegalArgumentException("The peer must be set");
         Message message = new Message(content, peer.getNumber(), getNumber(), new Date());
         sent.add(message);
         peer.receiveSms(message);

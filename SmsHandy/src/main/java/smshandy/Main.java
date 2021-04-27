@@ -10,13 +10,13 @@ public class Main {
         TariffPlanSmsHandy handy2 = new TariffPlanSmsHandy("+4915256999352", provider1, "Anna");
         PrepaidSmsHandy handy3 = new PrepaidSmsHandy("+4915256999353", provider2, "Bob");
 
-        for (int i = 0; i < 10; i++) {
-            handy3.sendSmsDirect(handy1,"Message №"+i);
+        for (int i = 0; i < 100; i++) {
+            handy3.sendSms(handy1.getNumber(),"Message №"+i);
         }
-//        System.out.println(handy3);
+        System.out.println(handy3);
 //        handy3.listReceived();
-//        handy3.listSent();
-
+        handy3.listSent();
+        handy3.sendSms("*101#",null);
 //        handy1.listReceived();
 //        handy1.listSent();
     }
