@@ -47,6 +47,7 @@ public class Provider {
         SmsHandy senderHandy = subscriber.get(sender);
         Provider providerFor = findProviderFor(receiver);
 
+
         if(senderHandy.getProvider() != null &&  providerFor != null){
             senderHandy.addToSentMessages(message);
             SmsHandy receiverHandy = providerFor.subscriber.get(receiver);
@@ -97,5 +98,13 @@ public class Provider {
     @Override
     public int hashCode() {
         return Objects.hash(name, credits, subscriber);
+    }
+
+    public Map<String, SmsHandy> getSubscriber() {
+        return subscriber;
+    }
+
+    public void setSubscriber(Map<String, SmsHandy> subscriber) {
+        this.subscriber = subscriber;
     }
 }

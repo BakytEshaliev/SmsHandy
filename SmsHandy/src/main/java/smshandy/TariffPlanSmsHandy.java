@@ -12,11 +12,27 @@ public class TariffPlanSmsHandy extends SmsHandy{
     }
 
     public void payForSms() {
-        remainingFreeSms -= 1;
+        remainingFreeSms--;
     }
 
     public int getRemainingFreeSms() {
         return remainingFreeSms;
+    }
+
+    @Override
+    public void sendSms(String to, String content) {
+        if (canSendSms()) {
+            payForSms();
+            super.sendSms(to, content);
+        }
+    }
+
+    @Override
+    public void sendSmsDirect(SmsHandy peer, String content) {
+        if (canSendSms()) {
+            payForSms();
+            super.sendSmsDirect(peer, content);
+        }
     }
 
     @Override

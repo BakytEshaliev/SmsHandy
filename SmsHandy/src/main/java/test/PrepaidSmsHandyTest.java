@@ -26,6 +26,7 @@ public class PrepaidSmsHandyTest {
 
     @Test
     public void payForSmsTest(){
+        provider.deposit(handy.getNumber(),100);
         handy.payForSms();
         assertEquals(90, provider.getCredits().get(handy.getNumber()));
     }

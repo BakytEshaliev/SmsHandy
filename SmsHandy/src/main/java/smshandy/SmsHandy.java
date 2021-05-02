@@ -39,8 +39,10 @@ public abstract class SmsHandy {
             System.out.printf("<---The balance on your phone: %d--->%n", balance);
         }else if (canSendSms()) {
             Message message = new Message(content, to, number, new Date());
-            if (provider.send(message))
+            if (provider.send(message)) {
+                sent.add(message);
                 System.out.println("<---Message sent successfully--->\n");
+            }
             else
                 System.out.println("<---You can't send sms--->\n");
         }else
@@ -124,5 +126,13 @@ public abstract class SmsHandy {
 
     public String getName() {
         return name;
+    }
+
+    public List<Message> getSent() {
+        return sent;
+    }
+
+    public List<Message> getReceived() {
+        return received;
     }
 }

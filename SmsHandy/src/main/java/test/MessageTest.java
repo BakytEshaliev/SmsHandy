@@ -19,6 +19,6 @@ public class MessageTest {
         assertEquals("Content: Test Message\n" +
                 "From: +111111\n" +
                 "To: +222222\nDate: " +
-                message.getDate() + "\n", message.toString());
+                new Date() + "\n", message.toString());
     }
 }
