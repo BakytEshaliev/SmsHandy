@@ -9,6 +9,7 @@ import smshandy.TariffPlanSmsHandy;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -29,8 +30,23 @@ public class SmsHandyTest {
         handy.sendSms(testHandy.getNumber(), "hi");
         Message expectedMessage = new Message("hi",testHandy.getNumber(),handy.getNumber(),new Date());
 
-        assertTrue(handy.getSent().contains(expectedMessage));
-        assertTrue(testHandy.getReceived().contains(expectedMessage));
+        Message message = handy.getSent().get(0);
+        assertEquals(expectedMessage.getContent(),message.getContent());
+        assertEquals(expectedMessage.getTo(),message.getTo());
+        assertEquals(expectedMessage.getFrom(),message.getFrom());
+        Date expectedDate = expectedMessage.getDate();
+        Date actualDate = message.getDate();
+        long difference_In_Minutes = TimeUnit.MILLISECONDS.toMinutes(actualDate.getTime() - expectedDate.getTime()) % 60;
+        assertTrue(difference_In_Minutes == 0);
+
+        message = testHandy.getReceived().get(0);
+        assertEquals(expectedMessage.getContent(),message.getContent());
+        assertEquals(expectedMessage.getTo(),message.getTo());
+        assertEquals(expectedMessage.getFrom(),message.getFrom());
+        Date expectedDateFromReceived = expectedMessage.getDate();
+        Date actualDateFromReceived = message.getDate();
+        long difference_In_Minutes1 = TimeUnit.MILLISECONDS.toMinutes(actualDateFromReceived.getTime() - expectedDateFromReceived.getTime()) % 60;
+        assertTrue(difference_In_Minutes1 == 0);
     }
 
     @Test

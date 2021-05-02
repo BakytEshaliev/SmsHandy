@@ -1,12 +1,15 @@
 package test;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import smshandy.Message;
+import smshandy.PrepaidSmsHandy;
 import smshandy.Provider;
 import smshandy.TariffPlanSmsHandy;
 
-import java.util.Date;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,6 +20,11 @@ public class ProviderTest {
     @BeforeAll
     private static void beforeAllTests(){
         provider = new Provider("Megacom");
+    }
+
+    @AfterEach
+    private void afterEachTest(){
+        provider.setCredits(new HashMap<>());
     }
 
     @Test
@@ -54,8 +62,7 @@ public class ProviderTest {
 
     @Test
     public void getCreditForSmsHandyTest(){
-        TariffPlanSmsHandy handy = new TariffPlanSmsHandy("+1111111", provider, "Tom");
-        provider.deposit(handy.getNumber(),100);
+        PrepaidSmsHandy handy = new PrepaidSmsHandy("+1111111", provider, "Tom");
         assertEquals(provider.getCreditForSMsHandy(handy.getNumber()), 100);
     }
 }

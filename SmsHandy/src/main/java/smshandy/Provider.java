@@ -47,7 +47,6 @@ public class Provider {
         SmsHandy senderHandy = subscriber.get(sender);
         Provider providerFor = findProviderFor(receiver);
 
-
         if(senderHandy.getProvider() != null &&  providerFor != null){
             senderHandy.addToSentMessages(message);
             SmsHandy receiverHandy = providerFor.subscriber.get(receiver);
@@ -107,4 +106,8 @@ public class Provider {
     public void setSubscriber(Map<String, SmsHandy> subscriber) {
         this.subscriber = subscriber;
     }
+    public void setCredits(Map<String, Integer> credits) {
+        this.credits = credits;
+    }
+
 }

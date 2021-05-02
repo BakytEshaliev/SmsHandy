@@ -2,6 +2,7 @@ package test;
 
 import org.junit.jupiter.api.*;
 import smshandy.Message;
+
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -19,6 +20,6 @@ public class MessageTest {
         assertEquals("Content: Test Message\n" +
                 "From: +111111\n" +
                 "To: +222222\nDate: " +
-                new Date() + "\n", message.toString());
+                message.getDate() + "\n", message.toString());
     }
 }

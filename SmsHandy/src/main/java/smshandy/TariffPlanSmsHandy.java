@@ -20,22 +20,6 @@ public class TariffPlanSmsHandy extends SmsHandy{
     }
 
     @Override
-    public void sendSms(String to, String content) {
-        if (canSendSms()) {
-            payForSms();
-            super.sendSms(to, content);
-        }
-    }
-
-    @Override
-    public void sendSmsDirect(SmsHandy peer, String content) {
-        if (canSendSms()) {
-            payForSms();
-            super.sendSmsDirect(peer, content);
-        }
-    }
-
-    @Override
     public String toString() {
         return super.toString() + String.format("remaining free sms: %d\n", remainingFreeSms);
     }

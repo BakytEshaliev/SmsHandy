@@ -1,6 +1,8 @@
 package test;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import smshandy.Provider;
 import smshandy.TariffPlanSmsHandy;
@@ -8,11 +10,11 @@ import smshandy.TariffPlanSmsHandy;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TariffPlanSmsHandyTest {
-    private static TariffPlanSmsHandy handy;
-    private static Provider provider;
+    private TariffPlanSmsHandy handy;
+    private Provider provider;
 
-    @BeforeAll
-    private static void beforeAllTests(){
+    @BeforeEach
+    private void beforeAllTests(){
         provider = new Provider("Megacom");
         handy = new TariffPlanSmsHandy("+1111111", provider, "Tom");
     }
@@ -23,7 +25,7 @@ public class TariffPlanSmsHandyTest {
 
         TariffPlanSmsHandy testHandy = new TariffPlanSmsHandy("+2222222", provider, "Anna");
         for (int i = 0; i < 100; i++){
-            handy.sendSmsDirect(testHandy,"hi");
+            handy.sendSms(testHandy.getNumber(),"hi");
         }
         assertFalse(handy.canSendSms());
     }
