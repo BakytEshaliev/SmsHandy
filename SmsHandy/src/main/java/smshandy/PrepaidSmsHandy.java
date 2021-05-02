@@ -5,7 +5,6 @@ public class PrepaidSmsHandy extends SmsHandy{
 
     public PrepaidSmsHandy(String number, Provider provider, String name) {
         super(number, provider, name);
-        deposit(100);
     }
 
     public boolean canSendSms() {
