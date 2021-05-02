@@ -10,24 +10,8 @@ public class MessageTest {
     private static Message message;
 
     @BeforeAll
-    public static void beforeAllTests(){
-        /*provider1 = new Provider("Beeline");
-        provider2 = new Provider("Megacom");
-        handy1 = new TariffPlanSmsHandy("+4915256999351", provider1, "Tom");
-        handy2 = new TariffPlanSmsHandy("+4915256999352", provider1, "Anna");*/
+    private static void beforeAllTests(){
         message = new Message("Test Message","+222222","+111111",new Date());
-    }
-
-    @BeforeEach
-    public void setUpStreams() {
-        System.setOut(new PrintStream(outContent));
-        System.setErr(new PrintStream(errContent));
-    }
-
-    @AfterEach
-    public void restoreStreams() {
-        System.setOut(originalOut);
-        System.setErr(originalErr);
     }
 
     @Test
