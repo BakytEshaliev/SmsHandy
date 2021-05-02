@@ -14,10 +14,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MessageTest {
     private static Message message;
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-    private final PrintStream originalOut = System.out;
-    private final PrintStream originalErr = System.err;
 
     @BeforeAll
     public static void beforeAllTests(){
