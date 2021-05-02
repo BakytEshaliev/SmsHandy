@@ -23,6 +23,21 @@ public class PrepaidSmsHandy extends SmsHandy{
         getProvider().getCredits().put(getNumber(), credit - COST_PER_SMS);
     }
 
+    @Override
+    public void sendSms(String to, String content) {
+        if (canSendSms()) {
+            payForSms();
+            super.sendSms(to, content);
+        }
+    }
+
+    @Override
+    public void sendSmsDirect(SmsHandy peer, String content) {
+        if (canSendSms()) {
+            payForSms();
+            super.sendSmsDirect(peer, content);
+        }
+    }
 
     @Override
     public String toString() {
