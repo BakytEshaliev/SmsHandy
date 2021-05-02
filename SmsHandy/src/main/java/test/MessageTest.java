@@ -2,12 +2,6 @@ package test;
 
 import org.junit.jupiter.api.*;
 import smshandy.Message;
-import smshandy.PrepaidSmsHandy;
-import smshandy.Provider;
-import smshandy.TariffPlanSmsHandy;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
