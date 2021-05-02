@@ -13,11 +13,6 @@ import java.util.Date;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MessageTest {
-    private static Provider provider1;
-    private static Provider provider2;
-    private static TariffPlanSmsHandy handy1;
-    private static TariffPlanSmsHandy handy2;
-    private static PrepaidSmsHandy handy3;
     private static Message message;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
