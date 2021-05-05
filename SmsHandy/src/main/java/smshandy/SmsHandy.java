@@ -5,7 +5,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+
 public abstract class SmsHandy {
+	
     private String number;
     private String name;
     Provider provider;
@@ -13,6 +15,13 @@ public abstract class SmsHandy {
     private List<Message> sent;
     private List<Message> received;
 
+    /**
+     * Constructor for object of the class SmsHandy
+     * 
+     *@param number  the number from the SmsHandy
+     *@param provider the related provider
+     *@param name     the name of the SmsHandy
+     */
     public SmsHandy(String number, Provider provider,String name) {
         //for simplicity, the number can start with + and following 9-13 numbers.
         if(number == null || !number.trim().matches("^(\\+?)([0-9]){7,13}"))
@@ -26,6 +35,13 @@ public abstract class SmsHandy {
         this.sent = new ArrayList<>();
         this.received = new ArrayList<>();
     }
+    
+    /**
+     * Sends a message to the receiver via the provider.
+     * 
+     * @param to      the receiver of the message
+     * @param content the content of the message
+     */
     public void sendSms(String to,String content){
         if (to == null || to.isBlank())
             throw new IllegalArgumentException("The recipient must be set");
@@ -46,10 +62,24 @@ public abstract class SmsHandy {
         }else
             System.out.println("<---You don't have enough funds in your account--->\n");
     }
+    
+    /**
+     * Abstract method to check if you can send a message
+     */
     public abstract boolean canSendSms();
-
+    
+    
+    /**
+     * Abstract method to pay for the message
+     */
     public abstract void payForSms();
 
+    /**
+     * Sends a message direct to the receiver without the provider
+     * 
+     * @param peer    the receiver
+     * @param content the content of the message
+     */
     public void sendSmsDirect(SmsHandy peer, String content){
         if (peer == null)
             throw new IllegalArgumentException("The peer must be set");
@@ -58,10 +88,18 @@ public abstract class SmsHandy {
         peer.receiveSms(message);
     }
 
+    /**
+     * Gets a message and saves it
+     * 
+     * @param message the reseived message
+     */
     public void receiveSms(Message message){
         received.add(message);
     }
 
+    /**
+     * Shows a list of the sent messages
+     */
     public void listSent(){
         if (sent.size() == 0){
             System.out.println("<---Sent list is empty--->\n");
@@ -72,6 +110,10 @@ public abstract class SmsHandy {
             System.out.println(message);
         }
     }
+    
+    /**
+     * Shows a list of the received messages
+     */
     public void listReceived(){
         if (received.size() == 0){
             System.out.println("<---Received list is empty--->\n");
@@ -94,9 +136,14 @@ public abstract class SmsHandy {
     public void setProvider(Provider provider) {
         this.provider = provider;
     }
+    
+    /**
+     * Gives a sent message to the related list
+     */
     public void addToSentMessages(Message message){
         sent.add(message);
     }
+    
     @Override
     public String toString() {
         return String.format(
@@ -109,6 +156,11 @@ public abstract class SmsHandy {
                 getProvider().getName());
     }
 
+    /**
+     * Checks if the number is equals to the Handynumber
+     * 
+     * @param return true if equals, false if not equal
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
