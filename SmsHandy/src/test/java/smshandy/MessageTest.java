@@ -1,4 +1,4 @@
-package test;
+package smshandy;
 
 import org.junit.jupiter.api.*;
 import smshandy.Message;
