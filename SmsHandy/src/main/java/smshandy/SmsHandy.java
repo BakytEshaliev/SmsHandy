@@ -23,7 +23,7 @@ public abstract class SmsHandy {
      *@param name     the name of the SmsHandy
      */
     public SmsHandy(String number, Provider provider,String name) {
-        //for simplicity, the number can start with + and following 9-13 numbers.
+        //for simplicity, the number can start with + and following 7-13 numbers.
         if(number == null || !number.trim().matches("^(\\+?)([0-9]){7,13}"))
             throw new IllegalArgumentException("The number is incorrect");
         if (provider == null)

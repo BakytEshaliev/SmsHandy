@@ -9,6 +9,7 @@ import smshandy.TariffPlanSmsHandy;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -68,25 +69,20 @@ public class SmsHandyTest {
 
     @Test
     public void listSendTest(){
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-
         TariffPlanSmsHandy testHandy = new TariffPlanSmsHandy("+2222222", provider, "Anna");
         handy.sendSmsDirect(testHandy,"hi");
         Message expectedMessage = new Message("hi",testHandy.getNumber(),handy.getNumber(),new Date());
-        handy.listSent();
-        assertEquals("Sent messages: \n"+expectedMessage.toString() +"\n", outContent.toString());
+        List<Message> handySent = handy.getSent();
+
+        assertEquals(List.of(expectedMessage),handySent);
     }
 
     @Test
     public void listReceivedTest(){
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-
         TariffPlanSmsHandy testHandy = new TariffPlanSmsHandy("+2222222", provider, "Anna");
         handy.sendSmsDirect(testHandy,"hi");
         Message expectedMessage = new Message("hi",testHandy.getNumber(),handy.getNumber(),new Date());
-        testHandy.listReceived();
-        assertEquals("Received messages: \n"+expectedMessage.toString() +"\n", outContent.toString());
+        List<Message> handyReceived = testHandy.getReceived();
+        assertEquals(List.of(expectedMessage), handyReceived);
     }
 }
