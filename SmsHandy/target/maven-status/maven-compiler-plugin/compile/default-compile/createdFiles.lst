@@ -1,0 +1,8 @@
+smshandy\PrepaidSmsHandy.class
+smshandy\controller\ProviderController.class
+smshandy\Message.class
+smshandy\SmsHandy.class
+smshandy\TariffPlanSmsHandy.class
+smshandy\Main.class
+smshandy\Provider.class
+smshandy\controller\HandyController.class
