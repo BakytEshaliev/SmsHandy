@@ -53,7 +53,7 @@
                   </HBox>
                   <HBox layoutX="16.0" layoutY="295.0" prefHeight="25.0" prefWidth="265.0">
                      <children>
-                        <ChoiceBox fx:id="providerChoiceBox" prefWidth="150.0" />
+                        <ChoiceBox fx:id="providersCB" prefWidth="150.0" />
                         <Button mnemonicParsing="false" onAction="#changeProviderBtn" prefHeight="25.0" prefWidth="115.0" text="Change Provider" />
                      </children>
                   </HBox>

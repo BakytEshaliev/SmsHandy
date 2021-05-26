@@ -49,4 +49,12 @@ public class DBinit {
     public void deletePhone(SmsHandy smsHandy){
         allHandy.remove(smsHandy);
     }
+
+    public Provider findProviderByName(String name){
+        for (Provider p : providers){
+            if (p.getName().equals(name))
+                return p;
+        }
+        return null;
+    }
 }

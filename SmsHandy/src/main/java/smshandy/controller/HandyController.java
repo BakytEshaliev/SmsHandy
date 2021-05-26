@@ -3,6 +3,7 @@ package smshandy.controller;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -20,6 +21,9 @@ public class HandyController {
     private TableColumn<SmsHandy,String> handyCol;
     @FXML
     private TableColumn<SmsHandy,String> artCol;
+
+    @FXML
+    ChoiceBox<String> providersCB = new ChoiceBox();
 
     @FXML
     private Label providerValLabel;
@@ -42,6 +46,7 @@ public class HandyController {
         handyTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> setSelectedItemDetails(newValue));
         handyCol.setCellValueFactory( cell -> new SimpleStringProperty(cell.getValue().getName()));
         artCol.setCellValueFactory(cell -> new SimpleStringProperty(getArtHandy(cell.getValue())));
+        db.getAllProviders().forEach(e -> providersCB.getItems().add(e.getName()));
     }
 
     private void setSelectedItemDetails(SmsHandy handy) {
@@ -81,6 +86,18 @@ public class HandyController {
         System.out.println(db.getAllHandy().size());
 
         loadAllPhones();
+    }
+
+    @FXML
+    public void changeProviderBtn(){
+        try {
+            SmsHandy smsHandy = handyTable.getSelectionModel().getSelectedItem();
+            smsHandy.setProvider(db.findProviderByName(providersCB.getValue()));
+            setSelectedItemDetails(smsHandy);
+        }
+        catch (NullPointerException e){
+
+        }
     }
 
     private void loadAllPhones(){
