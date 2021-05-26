@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import smshandy.DBinit;
+import smshandy.PrepaidSmsHandy;
 import smshandy.SmsHandy;
 import smshandy.TariffPlanSmsHandy;
 
@@ -26,6 +27,10 @@ public class HandyController {
     private Label numberValLabel;   
     @FXML
     private Label handyValLabel;
+    @FXML
+    private Label balanceValLabel;
+    @FXML
+    private Label balanceLabel;
 
 //    @FXML
 //    private Label deletePhoneBtn;
@@ -44,10 +49,19 @@ public class HandyController {
             providerValLabel.setText(handy.getProvider().getName());
             numberValLabel.setText(handy.getNumber());
             handyValLabel.setText(handy.getName());
+            if (handy.getClass().equals(TariffPlanSmsHandy.class)){
+                balanceLabel.setText("Guthaben");
+                balanceValLabel.setText(((TariffPlanSmsHandy)handy).getRemainingFreeSms()+"");
+            }else {
+                balanceLabel.setText("Remaining Free Sms");
+                balanceValLabel.setText(((PrepaidSmsHandy)handy).getBalance()+"");
+
+            }
         }else {
             providerValLabel.setText("");
             numberValLabel.setText("");
             handyValLabel.setText("");
+            balanceValLabel.setText("");
 
         }
     }

@@ -32,6 +32,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <Label text="Owner Name" />
@@ -40,6 +41,8 @@
                         <Label fx:id="handyValLabel" prefHeight="17.0" prefWidth="58.0" GridPane.columnIndex="1" />
                         <Label fx:id="numberValLabel" prefHeight="17.0" prefWidth="61.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label fx:id="providerValLabel" prefHeight="17.0" prefWidth="86.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="balanceLabel" text="Balance" GridPane.rowIndex="3" />
+                        <Label fx:id="balanceValLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                   <HBox layoutX="14.0" layoutY="246.0" prefHeight="49.0" prefWidth="272.0" AnchorPane.bottomAnchor="103.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="246.0">

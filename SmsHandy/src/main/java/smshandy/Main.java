@@ -18,7 +18,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        AnchorPane root = FXMLLoader.load(getClass().getResource("view/main.fxml"));
+        AnchorPane root = FXMLLoader.load(getClass().getResource("view/phones.fxml"));
         stage.setScene(new Scene(root));
         stage.show();
     }

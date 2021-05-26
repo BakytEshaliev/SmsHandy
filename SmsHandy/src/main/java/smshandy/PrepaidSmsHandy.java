@@ -46,4 +46,8 @@ public class PrepaidSmsHandy extends SmsHandy{
     public String toString() {
         return super.toString() + String.format("Balance : %d\n", getProvider().getCreditForSMsHandy(getNumber()));
     }
+
+    public int getBalance(){
+        return getProvider().getCredits().get(getNumber());
+    }
 }
