@@ -1,4 +1,4 @@
-package smshandy;
+package smshandy.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,13 +7,12 @@ import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import smshandy.Main;
-import smshandy.controller.HandyController;
-import smshandy.controller.ProviderController;
+import smshandy.ProviderController;
 
 import java.io.IOException;
 
-public class MainController {
-    Stage stage;
+public  class MainController {
+    Stage primaryStage;
     Main main;
     @FXML
     TabPane tabPane;
@@ -31,14 +30,14 @@ public class MainController {
     ProviderController providerController;
 
     public void initialize() throws IOException {
-        handyTab.setContent(FXMLLoader.load(getClass().getResource("view/phones.fxml")));
+        handyTab.setContent(FXMLLoader.load(Main.class.getResource("view/phones.fxml")));
         tabPane.getSelectionModel().select(handyTab);
         tabPane.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
             switch (newValue.getId()){
                 case "handyTab":{
 
                     try {
-                        handyTab.setContent(FXMLLoader.load(getClass().getResource("view/phones.fxml")));
+                        handyTab.setContent(FXMLLoader.load(Main.class.getResource("view/phones.fxml")));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -46,7 +45,7 @@ public class MainController {
                 }
                 case "providerTab":{
                     try {
-                        providerTab.setContent(FXMLLoader.load(getClass().getResource("view/provider.fxml")));
+                        providerTab.setContent(FXMLLoader.load(Main.class.getResource("view/provider.fxml")));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -61,12 +60,12 @@ public class MainController {
     public void loadProvider(){
 
     }
-    public Stage getStage() {
-        return stage;
+    public Stage getPrimaryStage() {
+        return primaryStage;
     }
 
-    public void setStage(Stage stage) {
-        this.stage = stage;
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
     }
 
     public Main getMain() {

@@ -1,15 +1,24 @@
-package smshandy.controller;
+package smshandy;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import smshandy.DBinit;
+import smshandy.Main;
 import smshandy.Provider;
 import smshandy.TariffPlanSmsHandy;
+import smshandy.controller.MainController;
 
-public class ProviderController {
+import java.io.IOException;
+
+public class ProviderController extends MainController {
 
     @FXML
     private TableView<Provider> providerTable;
@@ -31,7 +40,25 @@ public class ProviderController {
 
         loadAllProviders();
     }
+    public void addProviderBtn(){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("view/providerForm.fxml"));
+            AnchorPane pane = loader.load();
 
+            Stage stage = new Stage();
+            stage.setTitle("Add Provider");
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(getPrimaryStage());
+            Scene scene = new Scene(pane);
+            stage.setScene(scene);
+            stage.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
     private void loadAllProviders(){
         providerTable.setItems(FXCollections.observableArrayList(db.getAllProviders()));
     }

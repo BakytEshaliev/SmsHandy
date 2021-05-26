@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import smshandy.controller.MainController;
 
 import java.io.IOException;
 
@@ -23,7 +24,7 @@ public class Main extends Application {
         Parent root = loader.load();
         MainController mainController = loader.getController();
         mainController.setMain(this);
-        mainController.setStage(stage);
+        mainController.setPrimaryStage(stage);
         stage.setScene(new Scene(root));
         stage.show();
     }
