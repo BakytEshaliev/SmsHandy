@@ -43,6 +43,11 @@ public class TariffPlanSmsHandy extends SmsHandy{
         this.remainingFreeSms = remainingFreeSms;
     }
 
+    public void deleteProvider(){
+        super.deleteProvider();
+        remainingFreeSms = 0;
+    }
+
     public void setProvider(Provider provider){
         super.setProvider(provider);
         remainingFreeSms = 100;

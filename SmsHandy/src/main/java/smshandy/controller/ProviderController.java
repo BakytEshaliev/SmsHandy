@@ -26,12 +26,7 @@ public class ProviderController {
         Provider provider = providerTable.getSelectionModel().getSelectedItem();
         // delete provider
         //and set null to owners of provider
-        provider.getSubscriber().forEach((k,v)->{
-            if (v.getClass().equals(TariffPlanSmsHandy.class)) {
-                ((TariffPlanSmsHandy)v).setRemainingFreeSms(0);
-            }
-            v.deleteProvider();
-        });
+        provider.getSubscriber().forEach((k,v)-> v.deleteProvider());
         db.getAllProviders().remove(provider);
 
         loadAllProviders();

@@ -2,21 +2,21 @@ smshandy/Main.java
  smshandy.Main
 smshandy/Message.java
  smshandy.Message
-smshandy/controller/ProviderController.java
- smshandy.controller.ProviderController
+smshandy/SmsHandy.java
+ smshandy.SmsHandy
 module-info.java
  module-info
 smshandy/Provider.java
  smshandy.Provider
 smshandy/PrepaidSmsHandy.java
  smshandy.PrepaidSmsHandy
-smshandy/SmsHandy.java
- smshandy.SmsHandy
+smshandy/controller/ProviderController.java
+ smshandy.controller.ProviderController
+smshandy/MainController.java
+ smshandy.MainController
 smshandy/DBinit.java
  smshandy.DBinit
 smshandy/TariffPlanSmsHandy.java
  smshandy.TariffPlanSmsHandy
-smshandy/MainController.java
- smshandy.MainController
 smshandy/controller/HandyController.java
  smshandy.controller.HandyController
