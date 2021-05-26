@@ -134,9 +134,14 @@ public abstract class SmsHandy {
     }
 
     public void setProvider(Provider provider) {
-        provider.deleteSmsHandy(this);
-        this.provider = provider;
-        provider.register(this);
+            provider.deleteSmsHandy(this);
+            this.provider = provider;
+            provider.register(this);
+
+    }
+
+    public void deleteProvider(){
+        this.provider = null;
     }
     
     /**
@@ -155,14 +160,10 @@ public abstract class SmsHandy {
                 "Provider name: %s\n",
                 getName(),
                 getNumber(),
-                getProvider().getName());
+                getProvider()!=null?getProvider().getName():"No Provider");
     }
 
-    /**
-     * Checks if the number is equals to the Handynumber
-     * 
-     * @param return true if equals, false if not equal
-     */
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

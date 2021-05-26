@@ -31,6 +31,8 @@ public class MainController {
     ProviderController providerController;
 
     public void initialize() throws IOException {
+        handyTab.setContent(FXMLLoader.load(getClass().getResource("view/phones.fxml")));
+        tabPane.getSelectionModel().select(handyTab);
         tabPane.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
             switch (newValue.getId()){
                 case "handyTab":{

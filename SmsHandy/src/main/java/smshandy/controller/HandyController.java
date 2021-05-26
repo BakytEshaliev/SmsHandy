@@ -23,7 +23,7 @@ public class HandyController {
     private TableColumn<SmsHandy,String> artCol;
 
     @FXML
-    ChoiceBox<String> providersCB = new ChoiceBox();
+    ChoiceBox<String> providersCB;
 
     @FXML
     private Label providerValLabel;
@@ -46,22 +46,27 @@ public class HandyController {
         handyTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> setSelectedItemDetails(newValue));
         handyCol.setCellValueFactory( cell -> new SimpleStringProperty(cell.getValue().getName()));
         artCol.setCellValueFactory(cell -> new SimpleStringProperty(getArtHandy(cell.getValue())));
+        providersCB.setValue("Providers");
         db.getAllProviders().forEach(e -> providersCB.getItems().add(e.getName()));
     }
 
     private void setSelectedItemDetails(SmsHandy handy) {
         if (handy !=null) {
+            System.out.println(handy);
+
             if (handy.getProvider() != null) {
                 if (handy.getClass().equals(TariffPlanSmsHandy.class)) {
                     balanceLabel.setText("Guthaben");
-                    balanceValLabel.setText(((PrepaidSmsHandy) handy).getBalance() + "");
+                    balanceValLabel.setText(((TariffPlanSmsHandy) handy).getRemainingFreeSms() + "");
                 } else {
                     balanceLabel.setText("Remaining Free Sms");
-                    balanceValLabel.setText(((TariffPlanSmsHandy) handy).getRemainingFreeSms() + "");
+                    balanceValLabel.setText(((PrepaidSmsHandy) handy).getBalance() + "");
                 }
                 providerValLabel.setText(handy.getProvider().getName());
-            }else
+            }else{
                 providerValLabel.setText("No Provider");
+                balanceValLabel.setText("");
+            }
 
             numberValLabel.setText(handy.getNumber());
             handyValLabel.setText(handy.getName());

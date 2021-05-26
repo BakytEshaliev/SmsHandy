@@ -27,10 +27,10 @@ public class ProviderController {
         // delete provider
         //and set null to owners of provider
         provider.getSubscriber().forEach((k,v)->{
-            v.setProvider(null);
             if (v.getClass().equals(TariffPlanSmsHandy.class)) {
                 ((TariffPlanSmsHandy)v).setRemainingFreeSms(0);
             }
+            v.deleteProvider();
         });
         db.getAllProviders().remove(provider);
 

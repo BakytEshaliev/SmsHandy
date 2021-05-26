@@ -42,9 +42,11 @@ public class PrepaidSmsHandy extends SmsHandy{
         getProvider().getCredits().put(getNumber(), credit - COST_PER_SMS);
     }
 
+
+
     @Override
     public String toString() {
-        return super.toString() + String.format("Balance : %d\n", getProvider().getCreditForSMsHandy(getNumber()));
+        return super.toString() + String.format("Balance : %d\n", getProvider()!=null?getProvider().getCreditForSMsHandy(getNumber()):0);
     }
 
     public int getBalance(){
