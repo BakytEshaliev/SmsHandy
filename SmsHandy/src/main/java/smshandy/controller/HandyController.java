@@ -104,7 +104,9 @@ public class HandyController {
             setSelectedItemDetails(smsHandy);
         }
         catch (NullPointerException e){
-
+            /*
+            SHOW ERROR TO USER
+             */
         }
     }
 

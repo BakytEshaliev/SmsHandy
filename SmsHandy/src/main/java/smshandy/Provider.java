@@ -167,6 +167,7 @@ public class Provider {
 
 	public void deleteSmsHandy(SmsHandy smsHandy){
 		subscriber.remove(smsHandy);
+		credits.remove(smsHandy.getNumber());
 	}
 
 }

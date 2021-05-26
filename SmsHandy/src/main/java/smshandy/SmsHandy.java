@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public abstract class SmsHandy {
 	
-    private String number;
+    protected String number;
     private String name;
     Provider provider;
 

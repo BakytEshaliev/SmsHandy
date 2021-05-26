@@ -50,6 +50,13 @@ public class PrepaidSmsHandy extends SmsHandy{
     }
 
     public int getBalance(){
-        return getProvider().getCredits().get(getNumber());
+        if (provider == null)
+            return 0;
+        else return getProvider().getCredits().get(getNumber());
+    }
+
+    public void setProvider(Provider provider){
+        super.setProvider(provider);
+        provider.deposit(number, 100);
     }
 }
