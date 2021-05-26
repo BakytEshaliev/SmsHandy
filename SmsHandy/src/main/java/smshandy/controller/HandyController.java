@@ -89,6 +89,7 @@ public class HandyController {
     public void deletePhoneBtn(){
         System.out.println("Before " + db.getAllHandy().size());
         SmsHandy smsHandy = handyTable.getSelectionModel().getSelectedItem();
+        db.findProviderByName(smsHandy.getProvider().getName()).deleteSmsHandy(smsHandy);
         db.deletePhone(smsHandy);
         System.out.println("After " + db.getAllHandy().size());
         System.out.println(db.getAllHandy().size());
