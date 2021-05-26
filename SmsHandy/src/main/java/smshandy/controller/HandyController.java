@@ -11,7 +11,6 @@ import smshandy.SmsHandy;
 import smshandy.TariffPlanSmsHandy;
 
 
-
 public class HandyController {
 
     @FXML
@@ -26,15 +25,18 @@ public class HandyController {
     @FXML
     private Label numberValLabel;   
     @FXML
-    private Label handyValLabel; 
+    private Label handyValLabel;
+
+//    @FXML
+//    private Label deletePhoneBtn;
     DBinit db = DBinit.getInstance();
 
     public void initialize(){
-        handyTable.setItems(FXCollections.observableArrayList(db.getAllHandy()));
-
+        setSelectedItemDetails(null);
+        loadAllPhones();
         handyTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> setSelectedItemDetails(newValue));
         handyCol.setCellValueFactory( cell -> new SimpleStringProperty(cell.getValue().getName()));
-        artCol.setCellValueFactory(cell -> new SimpleStringProperty(getArthandy(cell.getValue())));
+        artCol.setCellValueFactory(cell -> new SimpleStringProperty(getArtHandy(cell.getValue())));
     }
 
     private void setSelectedItemDetails(SmsHandy handy) {
@@ -43,16 +45,32 @@ public class HandyController {
             numberValLabel.setText(handy.getNumber());
             handyValLabel.setText(handy.getName());
         }else {
-            
-            
+            providerValLabel.setText("");
+            numberValLabel.setText("");
+            handyValLabel.setText("");
+
         }
     }
 
-    private String getArthandy(SmsHandy smsHandy){
+    private String getArtHandy(SmsHandy smsHandy){
         if (smsHandy.getClass().equals(TariffPlanSmsHandy.class))
             return "Tariff Plan";
         else return "Prepaid Plan";
     }
 
+    @FXML
+    public void deletePhoneBtn(){
+        System.out.println("Before " + db.getAllHandy().size());
+        SmsHandy smsHandy = handyTable.getSelectionModel().getSelectedItem();
+        db.deletePhone(smsHandy);
+        System.out.println("After " + db.getAllHandy().size());
+        System.out.println(db.getAllHandy().size());
+
+        loadAllPhones();
+    }
+
+    private void loadAllPhones(){
+        handyTable.setItems(FXCollections.observableArrayList(db.getAllHandy()));
+    }
 
 }

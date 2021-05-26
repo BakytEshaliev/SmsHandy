@@ -33,7 +33,7 @@ set APP_HOME=%DIRNAME%..
 for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi
 
 @rem Add default JVM options here. You can also use JAVA_OPTS and SMS_HANDY_OPTS to pass JVM options to this script.
-set DEFAULT_JVM_OPTS="--module-path" "%APP_HOME%\lib" "--module" "smshandy_module/smshandy.Main"
+set DEFAULT_JVM_OPTS=
 
 @rem Find java.exe
 if defined JAVA_HOME goto findJavaFromJavaHome
@@ -68,10 +68,10 @@ goto fail
 @rem Setup the command line
 
 set CLASSPATH=
-set MODULE_PATH=
+set MODULE_PATH=%APP_HOME%\lib\SmsHandy.jar;%APP_HOME%\lib\javafx-fxml-15.0.1-win.jar;%APP_HOME%\lib\javafx-controls-15.0.1-win.jar;%APP_HOME%\lib\javafx-controls-15.0.1.jar;%APP_HOME%\lib\javafx-graphics-15.0.1-win.jar;%APP_HOME%\lib\javafx-graphics-15.0.1.jar;%APP_HOME%\lib\javafx-base-15.0.1-win.jar;%APP_HOME%\lib\javafx-base-15.0.1.jar;%APP_HOME%\lib\junit-jupiter-params-5.7.0.jar;%APP_HOME%\lib\junit-jupiter-engine-5.7.0.jar;%APP_HOME%\lib\junit-jupiter-api-5.7.0.jar;%APP_HOME%\lib\junit-platform-engine-1.7.0.jar;%APP_HOME%\lib\junit-platform-commons-1.7.0.jar;%APP_HOME%\lib\junit-jupiter-5.7.0.jar;%APP_HOME%\lib\apiguardian-api-1.1.0.jar;%APP_HOME%\lib\opentest4j-1.2.0.jar
 
 @rem Execute SmsHandy
-"%JAVA_EXE%" %JAVA_OPTS% %SMS_HANDY_OPTS% %DEFAULT_JVM_OPTS% %CMD_LINE_ARGS%
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %SMS_HANDY_OPTS%  -classpath "%CLASSPATH%" --module-path "%MODULE_PATH%" --module smshandy_module/smshandy.Main %*
 
 :end
 @rem End local scope for the variables with windows NT shell

@@ -23,15 +23,15 @@ public class DBinit {
         allTariffHandy.add(new TariffPlanSmsHandy("+1111114",getAllProviders().get(0), "Beka"));
         allTariffHandy.add(new TariffPlanSmsHandy("+1111115",getAllProviders().get(1), "Kyla"));
         allTariffHandy.add(new TariffPlanSmsHandy("+1111116",getAllProviders().get(2), "Bema"));
-
+        allHandy.addAll(getAllTariffHandy());
+        allHandy.addAll(getAllPrepaidHandy());
     }
 
     public  List<PrepaidSmsHandy> getAllPrepaidHandy(){
         return allPrepaidHandy;
     }
     public  List<SmsHandy> getAllHandy(){
-        allHandy.addAll(getAllTariffHandy());
-        allHandy.addAll(getAllPrepaidHandy());
+
         return allHandy;
     }
     public  List<TariffPlanSmsHandy> getAllTariffHandy(){
@@ -44,5 +44,9 @@ public class DBinit {
     public static DBinit getInstance() {
         if (instance==null) instance = new DBinit();
         return instance;
+    }
+
+    public void deletePhone(SmsHandy smsHandy){
+        allHandy.remove(smsHandy);
     }
 }
