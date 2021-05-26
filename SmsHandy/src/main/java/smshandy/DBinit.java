@@ -51,10 +51,9 @@ public class DBinit {
     }
 
     public Provider findProviderByName(String name){
-        for (Provider p : providers){
-            if (p.getName().equals(name))
-                return p;
-        }
-        return null;
+        return providers.stream()
+                .filter(e -> e.getName().equals(name))
+                .findAny()
+                .get();
     }
 }
