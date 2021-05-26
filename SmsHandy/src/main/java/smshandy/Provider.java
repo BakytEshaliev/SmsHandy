@@ -165,4 +165,8 @@ public class Provider {
 		this.credits = credits;
 	}
 
+	public void deleteSmsHandy(SmsHandy smsHandy){
+		subscriber.remove(smsHandy);
+	}
+
 }

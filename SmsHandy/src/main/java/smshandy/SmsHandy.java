@@ -134,7 +134,9 @@ public abstract class SmsHandy {
     }
 
     public void setProvider(Provider provider) {
+        provider.deleteSmsHandy(this);
         this.provider = provider;
+        provider.register(this);
     }
     
     /**
