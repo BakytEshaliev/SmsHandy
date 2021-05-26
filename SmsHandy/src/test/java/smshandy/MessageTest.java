@@ -1,6 +1,7 @@
 package smshandy;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import smshandy.Message;
 
 import java.util.Date;

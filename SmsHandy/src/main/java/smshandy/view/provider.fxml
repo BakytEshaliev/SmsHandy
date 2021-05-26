@@ -8,17 +8,16 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smshandy.controller.ProviderController">
    <children>
       <SplitPane dividerPositions="0.5" layoutX="179.0" layoutY="81.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <TableView layoutX="39.0" layoutY="31.0" prefHeight="398.0" prefWidth="296.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="providerTable" layoutX="39.0" layoutY="31.0" prefHeight="398.0" prefWidth="296.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn prefWidth="149.0" text="C1" />
-                      <TableColumn minWidth="0.0" prefWidth="146.0" text="C2" />
+                      <TableColumn fx:id="providerNameCol" prefWidth="149.0" text="Name" />
+                      <TableColumn fx:id="providerArtCol" minWidth="0.0" prefWidth="146.0" text="Art" />
                     </columns>
                   </TableView>
                </children>

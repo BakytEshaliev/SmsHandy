@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inheritJdk="true">
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$/../../src/main"/>
+	<levels>
+		<level name="Gradle: org.openjfx:javafx-fxml:win:15.0.1" value="project"/>
+		<level name="Gradle: org.openjfx:javafx-controls:15.0.1" value="project"/>
+		<level name="Gradle: org.openjfx:javafx-controls:win:15.0.1" value="project"/>
+		<level name="Gradle: org.openjfx:javafx-graphics:15.0.1" value="project"/>
+		<level name="Gradle: org.openjfx:javafx-graphics:win:15.0.1" value="project"/>
+		<level name="Gradle: org.openjfx:javafx-base:15.0.1" value="project"/>
+		<level name="Gradle: org.openjfx:javafx-base:win:15.0.1" value="project"/>
+		<level name="Gradle: org.junit.jupiter:junit-jupiter-api:5.7.2" value="project"/>
+		<level name="Gradle: org.junit.platform:junit-platform-commons:1.7.2" value="project"/>
+		<level name="Gradle: org.apiguardian:apiguardian-api:1.1.0" value="project"/>
+		<level name="Gradle: org.opentest4j:opentest4j:1.2.0" value="project"/>
+	</levels>
+</component>

@@ -22,46 +22,15 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-//        String path = System.getProperty("user.dir") +"\\src\\main\\java\\smshandy\\view\\sample.fxml";
-//        Parent parent = FXMLLoader.load(Main.class.getResource("view\\sample.fxml"));
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Main.class.getResource("/view/phones.fxml"));
-        AnchorPane root = (AnchorPane)loader.load();
-        primaryStage.setScene(new Scene(root));
 
-//        HandyController controller = loader.getController();
-        primaryStage.show();
+        load(primaryStage);
+    }
+    public void load(Stage stage) throws IOException {
+        AnchorPane root = FXMLLoader.load(getClass().getResource("view/sample.fxml"));
+        stage.setScene(new Scene(root));
+        stage.show();
+
     }
 
 
-    public static List<PrepaidSmsHandy> getAllPrepaidHandy(){
-        List<PrepaidSmsHandy> res= new ArrayList<>();
-        res.add(new PrepaidSmsHandy("+1111111", getAllProviders().get(0), "Anna"));
-        res.add(new PrepaidSmsHandy("+1111112",getAllProviders().get(1),"Bob"));
-        res.add(new PrepaidSmsHandy("+1111113)",getAllProviders().get(2),"Tom"));
-
-        return res;
-    }
-    public static List<SmsHandy> getAllHandy(){
-        ArrayList<SmsHandy> res = new ArrayList<>();
-        res.addAll(getAllTariffHandy());
-        res.addAll(getAllPrepaidHandy());
-        return res;
-    }
-    public static List<TariffPlanSmsHandy> getAllTariffHandy(){
-        ArrayList<TariffPlanSmsHandy> res = new ArrayList<>();
-        res.add(new TariffPlanSmsHandy("+1111114",getAllProviders().get(0), "Beka"));
-        res.add(new TariffPlanSmsHandy("+1111115",getAllProviders().get(1), "Kyla"));
-        res.add(new TariffPlanSmsHandy("+1111116",getAllProviders().get(2), "Bema"));
-        return null;
-    }
-
-    public static List<Provider> getAllProviders(){
-        ArrayList<Provider> providers = new ArrayList<>();
-        providers.add(new Provider("Beeline"));
-        providers.add(new Provider("Megacom"));
-        providers.add(new Provider("Oshka!"));
-
-        return providers;
-    }
 }
