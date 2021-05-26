@@ -2,8 +2,8 @@ package smshandy;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,7 +18,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        AnchorPane root = FXMLLoader.load(getClass().getResource("view/phones.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("view/main.fxml"));
+        Parent root = loader.load();
+        MainController mainController = loader.getController();
+        mainController.setMain(this);
+        mainController.setStage(stage);
         stage.setScene(new Scene(root));
         stage.show();
     }

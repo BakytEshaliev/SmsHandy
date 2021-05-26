@@ -46,17 +46,20 @@ public class HandyController {
 
     private void setSelectedItemDetails(SmsHandy handy) {
         if (handy !=null) {
-            providerValLabel.setText(handy.getProvider().getName());
+            if (handy.getProvider() != null) {
+                if (handy.getClass().equals(TariffPlanSmsHandy.class)) {
+                    balanceLabel.setText("Guthaben");
+                    balanceValLabel.setText(((PrepaidSmsHandy) handy).getBalance() + "");
+                } else {
+                    balanceLabel.setText("Remaining Free Sms");
+                    balanceValLabel.setText(((TariffPlanSmsHandy) handy).getRemainingFreeSms() + "");
+                }
+                providerValLabel.setText(handy.getProvider().getName());
+            }else
+                providerValLabel.setText("No Provider");
+
             numberValLabel.setText(handy.getNumber());
             handyValLabel.setText(handy.getName());
-            if (handy.getClass().equals(TariffPlanSmsHandy.class)){
-                balanceLabel.setText("Guthaben");
-                balanceValLabel.setText(((TariffPlanSmsHandy)handy).getRemainingFreeSms()+"");
-            }else {
-                balanceLabel.setText("Remaining Free Sms");
-                balanceValLabel.setText(((PrepaidSmsHandy)handy).getBalance()+"");
-
-            }
         }else {
             providerValLabel.setText("");
             numberValLabel.setText("");
