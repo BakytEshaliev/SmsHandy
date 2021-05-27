@@ -7,7 +7,6 @@ import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import smshandy.Main;
-import smshandy.ProviderController;
 
 import java.io.IOException;
 

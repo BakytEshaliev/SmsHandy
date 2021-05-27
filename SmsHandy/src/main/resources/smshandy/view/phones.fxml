@@ -68,10 +68,10 @@
                      </children>
                   </HBox>
                   <Button layoutX="184.0" layoutY="328.0" mnemonicParsing="false" onAction="#addPhone" text="add phone" />
-                  <TextField fx:id="ownerNameTextField" layoutX="15.0" layoutY="273.0" prefHeight="25.0" prefWidth="74.0" text="assdas" />
+                  <TextField fx:id="ownerNameTextField" layoutX="15.0" layoutY="273.0" prefHeight="25.0" prefWidth="74.0" />
                   <Label layoutX="17.0" layoutY="247.0" text="Owner Name" />
                   <Label layoutX="104.0" layoutY="247.0" text="Owner Number" />
-                  <TextField fx:id="ownerNumberTextField" layoutX="110.0" layoutY="273.0" prefHeight="25.0" prefWidth="82.0" text="sadas" />
+                  <TextField fx:id="ownerNumberTextField" layoutX="104.0" layoutY="273.0" prefHeight="25.0" prefWidth="82.0" />
                   <RadioButton fx:id="prepaidHandy" layoutX="21.0" layoutY="311.0" mnemonicParsing="false" onAction="#prepaidHandySelected" text="Prepaid Handy" />
                   <RadioButton fx:id="tariffPlanHandy" layoutX="21.0" layoutY="332.0" mnemonicParsing="false" onAction="#tariffPlanHandySelected" text="TariffPlan Handy" />
                   <ChoiceBox fx:id="providersCB1" layoutX="206.0" layoutY="273.0" prefHeight="25.0" prefWidth="99.0" />
