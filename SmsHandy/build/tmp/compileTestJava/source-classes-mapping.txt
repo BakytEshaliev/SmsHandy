@@ -2,9 +2,9 @@ smshandy/ProviderTest.java
  smshandy.ProviderTest
 smshandy/PrepaidSmsHandyTest.java
  smshandy.PrepaidSmsHandyTest
-smshandy/MessageTest.java
- smshandy.MessageTest
 smshandy/SmsHandyTest.java
  smshandy.SmsHandyTest
+smshandy/MessageTest.java
+ smshandy.MessageTest
 smshandy/TariffPlanSmsHandyTest.java
  smshandy.TariffPlanSmsHandyTest

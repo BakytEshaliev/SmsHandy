@@ -3,19 +3,22 @@ package smshandy.controller;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import smshandy.DBinit;
-import smshandy.PrepaidSmsHandy;
-import smshandy.Provider;
-import smshandy.SmsHandy;
-import smshandy.TariffPlanSmsHandy;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import smshandy.*;
 
-public class HandyController {
+import java.io.IOException;
+
+public class HandyController extends MainController {
 	Provider provider;
 	@FXML
 	private TableView<SmsHandy> handyTable;
@@ -170,6 +173,27 @@ public class HandyController {
 
 	private void loadAllPhones() {
 		handyTable.setItems(FXCollections.observableArrayList(db.getAllHandy()));
+	}
+
+	public void addHandyBtn() {
+		try {
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/handy_form.fxml"));
+			AnchorPane pane = loader.load();
+			HandyFormController controller = loader.getController();
+			Stage stage = new Stage();
+			controller.stage = stage;
+			stage.setTitle("Create new Handy");
+			stage.initModality(Modality.WINDOW_MODAL);
+			stage.initOwner(getPrimaryStage());
+			Scene scene = new Scene(pane);
+			stage.setScene(scene);
+			stage.showAndWait();
+			loadAllPhones();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }

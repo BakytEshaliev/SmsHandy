@@ -88,4 +88,13 @@ public class DBinit {
 	public Provider findProviderByName(String name) {
 		return providers.stream().filter(e -> e.getName().equals(name)).findAny().get();
 	}
+
+	public void addHandy(SmsHandy smsHandy){
+		if (smsHandy instanceof TariffPlanSmsHandy) {
+			allTariffHandy.add((TariffPlanSmsHandy) smsHandy);
+		} else {
+			allPrepaidHandy.add((PrepaidSmsHandy) smsHandy);
+		}
+		allHandy.add(smsHandy);
+	}
 }
