@@ -1,5 +1,5 @@
-smshandy/controller/HandyController.java
- smshandy.controller.HandyController
+smshandy/Main.java
+ smshandy.Main
 smshandy/DBinit.java
  smshandy.DBinit
 smshandy/PrepaidSmsHandy.java
@@ -14,10 +14,10 @@ smshandy/Provider.java
  smshandy.Provider
 smshandy/Message.java
  smshandy.Message
-smshandy/Main.java
- smshandy.Main
-smshandy/ProviderController.java
- smshandy.ProviderController
+smshandy/controller/HandyController.java
+ smshandy.controller.HandyController
+smshandy/controller/ProviderController.java
+ smshandy.controller.ProviderController
 smshandy/controller/MainController.java
  smshandy.controller.MainController
 smshandy/controller/ProviderFormController.java

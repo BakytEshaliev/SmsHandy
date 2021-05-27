@@ -1,4 +1,4 @@
-package smshandy;
+package smshandy.controller;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -10,10 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import smshandy.DBinit;
-import smshandy.Main;
-import smshandy.Provider;
-import smshandy.TariffPlanSmsHandy;
+import smshandy.*;
 import smshandy.controller.MainController;
 
 import java.io.IOException;
@@ -40,19 +37,22 @@ public class ProviderController extends MainController {
 
         loadAllProviders();
     }
+    @FXML
     public void addProviderBtn(){
         try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("view/providerForm.fxml"));
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/provider_form.fxml"));
+//            AnchorPane pane = FXMLLoader.load(Main.class.getResource("view/provider_form.fxml"));
             AnchorPane pane = loader.load();
-
+            ProviderFormController controller = loader.getController();
             Stage stage = new Stage();
+            controller.stage = stage;
             stage.setTitle("Add Provider");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(getPrimaryStage());
             Scene scene = new Scene(pane);
             stage.setScene(scene);
             stage.showAndWait();
+            loadAllProviders();
 
         } catch (IOException e) {
             e.printStackTrace();
