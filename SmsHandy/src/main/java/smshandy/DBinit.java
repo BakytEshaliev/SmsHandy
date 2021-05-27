@@ -86,7 +86,7 @@ public class DBinit {
 	 * @return the provider with the specific name
 	 */
 	public Provider findProviderByName(String name) {
-		return providers.stream().filter(e -> e.getName().equals(name)).findAny().get();
+		return providers.stream().filter(e -> e.getName().equals(name)).findFirst().orElse(null);
 	}
 
 	public void addHandy(SmsHandy smsHandy){

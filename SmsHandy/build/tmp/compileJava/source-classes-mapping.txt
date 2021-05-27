@@ -1,15 +1,15 @@
-smshandy/Message.java
- smshandy.Message
-smshandy/Provider.java
- smshandy.Provider
+smshandy/Main.java
+ smshandy.Main
+smshandy/SmsHandy.java
+ smshandy.SmsHandy
 smshandy/PrepaidSmsHandy.java
  smshandy.PrepaidSmsHandy
 smshandy/TariffPlanSmsHandy.java
  smshandy.TariffPlanSmsHandy
-smshandy/SmsHandy.java
- smshandy.SmsHandy
-smshandy/Main.java
- smshandy.Main
+smshandy/Provider.java
+ smshandy.Provider
+smshandy/Message.java
+ smshandy.Message
 module-info.java
  module-info
 smshandy/DBinit.java

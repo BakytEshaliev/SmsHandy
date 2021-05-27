@@ -104,14 +104,15 @@ public class HandyController extends MainController {
 
 	@FXML
 	public void deletePhoneBtn() {
-		System.out.println("Before " + db.getAllHandy().size());
-		SmsHandy smsHandy = handyTable.getSelectionModel().getSelectedItem();
-		db.findProviderByName(smsHandy.getProvider().getName()).deleteSmsHandy(smsHandy);
-		db.deletePhone(smsHandy);
-		System.out.println("After " + db.getAllHandy().size());
-		System.out.println(db.getAllHandy().size());
 
-		loadAllPhones();
+		SmsHandy smsHandy = handyTable.getSelectionModel().getSelectedItem();
+		if (smsHandy!=null) {
+			db.findProviderByName(smsHandy.getProvider().getName()).deleteSmsHandy(smsHandy);
+			db.deletePhone(smsHandy);
+			System.out.println(db.getAllHandy().size());
+
+			loadAllPhones();
+		}
 	}
 
 	@FXML
