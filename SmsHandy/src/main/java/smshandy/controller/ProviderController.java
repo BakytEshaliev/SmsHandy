@@ -39,10 +39,13 @@ public class ProviderController extends MainController {
 		Provider provider = providerTable.getSelectionModel().getSelectedItem();
 		// delete provider
 		// and set null to owners of provider
-		provider.getSubscriber().forEach((k, v) -> v.deleteProvider());
-		db.getAllProviders().remove(provider);
+		if (provider!=null) {
 
-		loadAllProviders();
+			provider.getSubscriber().forEach((k, v) -> v.deleteProvider());
+			db.getAllProviders().remove(provider);
+			loadAllProviders();
+		}
+
 	}
 
 	@FXML
