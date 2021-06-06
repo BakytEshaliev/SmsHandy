@@ -72,10 +72,10 @@ public class HandyController extends MainController {
 
 			if (handy.getProvider() != null) {
 				if (handy.getClass().equals(TariffPlanSmsHandy.class)) {
-					balanceLabel.setText("Guthaben");
+					balanceLabel.setText("Remaining Free Sms");
 					balanceValLabel.setText(((TariffPlanSmsHandy) handy).getRemainingFreeSms() + "");
 				} else {
-					balanceLabel.setText("Remaining Free Sms");
+					balanceLabel.setText("Guthaben");
 					balanceValLabel.setText(((PrepaidSmsHandy) handy).getBalance() + "");
 				}
 				providerValLabel.setText(handy.getProvider().getName());
