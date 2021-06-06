@@ -53,6 +53,9 @@ public class HandyController extends MainController {
 	@FXML
 	private RadioButton tariffPlanHandy;
 
+	@FXML
+	private TextField balanceTextField;
+
 	DBinit db = DBinit.getInstance();
 
 	public void initialize() {
@@ -106,7 +109,7 @@ public class HandyController extends MainController {
 	public void deletePhoneBtn() {
 
 		SmsHandy smsHandy = handyTable.getSelectionModel().getSelectedItem();
-		if (smsHandy!=null) {
+		if (smsHandy != null) {
 			db.findProviderByName(smsHandy.getProvider().getName()).deleteSmsHandy(smsHandy);
 			db.deletePhone(smsHandy);
 			System.out.println(db.getAllHandy().size());
@@ -195,6 +198,16 @@ public class HandyController extends MainController {
 			e.printStackTrace();
 		}
 
+	}
+
+	public void rechargeBalanceButton() {
+		SmsHandy smsHandy = handyTable.getSelectionModel().getSelectedItem();
+		if (smsHandy.getClass().equals(PrepaidSmsHandy.class)) {
+			int increase = Integer.parseInt(balanceTextField.getText());
+			((PrepaidSmsHandy) smsHandy).deposit(increase);
+			setSelectedItemDetails(smsHandy);
+			balanceTextField.setText("");
+		}
 	}
 
 }
