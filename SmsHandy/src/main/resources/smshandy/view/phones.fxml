@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smshandy.controller.HandyController">
    <children>
@@ -67,7 +59,7 @@
                         <Button mnemonicParsing="false" onAction="#deletePhoneBtn" prefHeight="25.0" prefWidth="120.0" text="Delete phone" GridPane.rowIndex="1" />
                         <Button mnemonicParsing="false" onAction="#showAllReceivedSms" prefHeight="25.0" prefWidth="123.0" text="all received sms" GridPane.rowIndex="3" />
                         <Button mnemonicParsing="false" onAction="#showAllSentSms" prefHeight="25.0" prefWidth="121.0" text="all sent sms" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Button mnemonicParsing="false" onAction="#sendSms" prefHeight="25.0" prefWidth="122.0" text="send sms" GridPane.rowIndex="2" />
+                        <Button fx:id="sendSmsButton" mnemonicParsing="false" onAction="#sendSms" prefHeight="25.0" prefWidth="122.0" text="send sms" GridPane.rowIndex="2" />
                         <Button fx:id="loadCreditButton" mnemonicParsing="false" onAction="#loadCredits" prefHeight="25.0" prefWidth="120.0" text="load creadits" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Button mnemonicParsing="false" onAction="#addHandyBtn" prefHeight="25.0" prefWidth="116.0" text="Create new phone" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>

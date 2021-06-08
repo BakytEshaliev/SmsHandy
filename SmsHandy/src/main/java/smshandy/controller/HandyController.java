@@ -41,6 +41,7 @@ public class HandyController extends MainController {
     @FXML
     private Label balanceLabel;
 	@FXML private Button loadCreditButton;
+	@FXML private Button sendSmsButton;
     DBinit db = DBinit.getInstance();
 
     @Override
@@ -54,11 +55,15 @@ public class HandyController extends MainController {
         providersCB.setValue("Providers");
         db.getAllProviders().forEach(e -> providersCB.getItems().add(e.getName()));
     }
+    private void disableButtons(SmsHandy handy){
+        loadCreditButton.setDisable(handy instanceof TariffPlanSmsHandy);
+        loadCreditButton.setDisable(handy.getProvider() == null);
+        sendSmsButton.setDisable(handy.getProvider() == null);
+    }
 
     private void setSelectedItemDetails(SmsHandy handy) {
         if (handy != null) {
-			loadCreditButton.setDisable(handy instanceof TariffPlanSmsHandy);
-
+			disableButtons(handy);
             if (handy.getProvider() != null) {
                 if (handy.getClass().equals(TariffPlanSmsHandy.class)) {
                     balanceLabel.setText("Remaining Free Sms");
