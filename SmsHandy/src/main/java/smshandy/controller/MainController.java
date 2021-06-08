@@ -1,10 +1,7 @@
 package smshandy.controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import smshandy.Main;
 

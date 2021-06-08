@@ -19,7 +19,7 @@ import smshandy.SmsHandy;
 import smshandy.TariffPlanSmsHandy;
 
 public class HandyController extends MainController {
-    Provider provider;
+
     @FXML
     private TableView<SmsHandy> handyTable;
     @FXML
@@ -29,8 +29,6 @@ public class HandyController extends MainController {
 
     @FXML
     ChoiceBox<String> providersCB;
-    @FXML
-    ChoiceBox<String> providersCB1;
 
     @FXML
     private Label providerValLabel;
@@ -42,19 +40,6 @@ public class HandyController extends MainController {
     private Label balanceValLabel;
     @FXML
     private Label balanceLabel;
-
-    @FXML
-    TextField ownerNameTextField;
-    @FXML
-    private TextField ownerNumberTextField;
-
-    @FXML
-    private RadioButton prepaidHandy;
-    @FXML
-    private RadioButton tariffPlanHandy;
-
-    @FXML
-    private TextField balanceTextField;
 	@FXML private Button loadCreditButton;
     DBinit db = DBinit.getInstance();
 
@@ -118,60 +103,19 @@ public class HandyController extends MainController {
 
     @FXML
     public void changeProviderBtn() {
-        try {
-            SmsHandy smsHandy = handyTable.getSelectionModel().getSelectedItem();
-            smsHandy.setProvider(db.findProviderByName(providersCB.getValue()));
-            setSelectedItemDetails(smsHandy);
-        } catch (NullPointerException e) {
-            /*
-             * SHOW ERROR TO USER
-             */
+        SmsHandy smsHandy = handyTable.getSelectionModel().getSelectedItem();
+        if (smsHandy!=null){
+            try {
+                smsHandy.setProvider(db.findProviderByName(providersCB.getValue()));
+                setSelectedItemDetails(smsHandy);
+            } catch (NullPointerException e) {
+                /*
+                 * SHOW ERROR TO USER
+                 */
+            }
         }
     }
 
-    @FXML
-    private boolean prepaidHandySelected() {
-        if (prepaidHandy.isArmed()) {
-            prepaidHandy.setSelected(true);
-            return true;
-        }
-
-        if (prepaidHandy.isSelected() == true && prepaidHandy.isArmed()) {
-            prepaidHandy.setSelected(false);
-            return false;
-        }
-        return false;
-    }
-
-    @FXML
-    private boolean tariffPlanHandySelected() {
-        if (prepaidHandy.isArmed()) {
-            prepaidHandy.setSelected(true);
-            return true;
-        }
-        if (prepaidHandy.isSelected() == true && prepaidHandy.isArmed()) {
-            prepaidHandy.setSelected(false);
-            return false;
-        }
-        return false;
-    }
-
-    @FXML
-    public void addPhone() {
-        provider = new Provider(providersCB.getValue());
-
-        if (prepaidHandySelected() == true) {
-            db.getAllHandy()
-                    .add(new PrepaidSmsHandy(ownerNumberTextField.getText(), provider, ownerNameTextField.getText()));
-            loadAllPhones();
-        }
-        if (tariffPlanHandySelected() == true) {
-            db.getAllHandy().add(
-                    new TariffPlanSmsHandy(ownerNumberTextField.getText(), provider, ownerNumberTextField.getText()));
-            loadAllPhones();
-        }
-
-    }
 
     public void loadAllPhones() {
         handyTable.setItems(FXCollections.observableArrayList(db.getAllHandy()));
@@ -216,6 +160,7 @@ public class HandyController extends MainController {
                 Scene scene = new Scene(pane);
                 stage.setScene(scene);
                 stage.showAndWait();
+                loadAllPhones();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -279,7 +224,7 @@ public class HandyController extends MainController {
 
 				AllSentSmsController controller = loader.getController();
 				Stage stage = new Stage();
-                controller.setPrimaryStage(getPrimaryStage());
+                controller.setPrimaryStage(stage);
                 controller.setPhone(smsHandy);
                 controller.loadData();
 

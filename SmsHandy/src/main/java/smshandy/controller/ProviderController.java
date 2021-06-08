@@ -10,8 +10,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import smshandy.*;
-import smshandy.controller.MainController;
+import smshandy.DBinit;
+import smshandy.Main;
+import smshandy.Provider;
 
 import java.io.IOException;
 
@@ -55,7 +56,6 @@ public class ProviderController extends MainController {
 	public void addProviderBtn() {
 		try {
 			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/provider_form.fxml"));
-//            AnchorPane pane = FXMLLoader.load(Main.class.getResource("view/provider_form.fxml"));
 			AnchorPane pane = loader.load();
 			ProviderFormController controller = loader.getController();
 			Stage stage = new Stage();

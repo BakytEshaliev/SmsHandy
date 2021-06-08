@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smshandy.controller.HandyController">
@@ -47,26 +46,32 @@
                         <Label fx:id="balanceValLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
-                  <HBox layoutX="12.0" layoutY="150.0" prefHeight="49.0" prefWidth="272.0" AnchorPane.bottomAnchor="199.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="150.0" />
-                  <HBox layoutX="17.0" layoutY="187.0" prefHeight="25.0" prefWidth="265.0">
+                  <GridPane layoutX="7.0" layoutY="209.0" prefHeight="161.0" prefWidth="284.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
                      <children>
-                        <ChoiceBox fx:id="providersCB" prefWidth="150.0" />
-                        <Button mnemonicParsing="false" onAction="#changeProviderBtn" prefHeight="25.0" prefWidth="130.0" text="Change Provider">
+                        <ChoiceBox fx:id="providersCB" prefHeight="25.0" prefWidth="122.0" />
+                        <Button mnemonicParsing="false" onAction="#changeProviderBtn" prefHeight="25.0" prefWidth="116.0" text="Change Provider" GridPane.columnIndex="1">
                            <padding>
                               <Insets left="10.0" />
                            </padding>
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
                         </Button>
+                        <Button mnemonicParsing="false" onAction="#deletePhoneBtn" prefHeight="25.0" prefWidth="120.0" text="Delete phone" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#showAllReceivedSms" prefHeight="25.0" prefWidth="123.0" text="all received sms" GridPane.rowIndex="3" />
+                        <Button mnemonicParsing="false" onAction="#showAllSentSms" prefHeight="25.0" prefWidth="121.0" text="all sent sms" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Button mnemonicParsing="false" onAction="#sendSms" prefHeight="25.0" prefWidth="122.0" text="send sms" GridPane.rowIndex="2" />
+                        <Button fx:id="loadCreditButton" mnemonicParsing="false" onAction="#loadCredits" prefHeight="25.0" prefWidth="120.0" text="load creadits" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Button mnemonicParsing="false" onAction="#addHandyBtn" prefHeight="25.0" prefWidth="116.0" text="Create new phone" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
-                  </HBox>
-                  <Button layoutX="159.0" layoutY="230.0" mnemonicParsing="false" onAction="#addHandyBtn" prefHeight="25.0" prefWidth="120.0" text="Create new phone" />
-                  <Button layoutX="16.0" layoutY="230.0" mnemonicParsing="false" onAction="#deletePhoneBtn" prefHeight="25.0" prefWidth="132.0" text="Delete phone" />
-                  <Button layoutX="14.0" layoutY="273.0" mnemonicParsing="false" onAction="#sendSms" prefHeight="25.0" prefWidth="132.0" text="send sms" />
-                  <Button fx:id="loadCreditButton" layoutX="159.0" layoutY="273.0" mnemonicParsing="false" onAction="#loadCredits" prefHeight="25.0" prefWidth="120.0" text="load creadits" />
-                  <Button layoutX="14.0" layoutY="318.0" mnemonicParsing="false" onAction="#showAllReceivedSms" prefHeight="25.0" prefWidth="132.0" text="all received sms" />
-                  <Button layoutX="159.0" layoutY="318.0" mnemonicParsing="false" onAction="#showAllSentSms" prefHeight="25.0" prefWidth="120.0" text="all sent sms" />
+                  </GridPane>
                </children>
             </AnchorPane>
          </items>

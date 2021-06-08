@@ -1,13 +1,8 @@
 package smshandy.controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import smshandy.PrepaidSmsHandy;
-import smshandy.SmsHandy;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class LoadCreditController extends MainController{
 

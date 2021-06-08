@@ -15,7 +15,6 @@ import smshandy.SmsHandy;
 public class AllSentSmsController extends MainController{
 
     private SmsHandy phone;
-    private Stage parentStage;
     @FXML
     private TableView<Message> recipientTable;
 
@@ -55,7 +54,4 @@ public class AllSentSmsController extends MainController{
         this.phone = phone;
     }
 
-    public void setParentStage(Stage parentStage) {
-        this.parentStage = parentStage;
-    }
 }
