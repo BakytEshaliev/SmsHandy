@@ -66,7 +66,7 @@
                   <Button layoutX="17.0" layoutY="278.0" mnemonicParsing="false" onAction="#deletePhoneBtn" prefHeight="25.0" prefWidth="120.0" text="delete phone" />
                   <TextField fx:id="balanceTextField" layoutX="17.0" layoutY="236.0" prefHeight="25.0" prefWidth="80.0" />
                   <Button layoutX="159.0" layoutY="236.0" mnemonicParsing="false" onAction="#rechargeBalanceButton" text="Recharge Balance" />
-                  <Button layoutX="17.0" layoutY="329.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="write message" />
+                  <Button layoutX="17.0" layoutY="329.0" mnemonicParsing="false" onAction="#writeMessage" prefHeight="25.0" prefWidth="104.0" text="write message" />
                </children>
             </AnchorPane>
          </items>

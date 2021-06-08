@@ -1,5 +1,7 @@
 package smshandy.controller;
 
+import java.io.IOException;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -14,9 +16,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import smshandy.*;
-
-import java.io.IOException;
+import smshandy.DBinit;
+import smshandy.Main;
+import smshandy.PrepaidSmsHandy;
+import smshandy.Provider;
+import smshandy.SmsHandy;
+import smshandy.TariffPlanSmsHandy;
 
 public class HandyController extends MainController {
 	Provider provider;
@@ -58,6 +63,7 @@ public class HandyController extends MainController {
 
 	DBinit db = DBinit.getInstance();
 
+	@Override
 	public void initialize() {
 		setSelectedItemDetails(null);
 		loadAllPhones();
@@ -208,6 +214,25 @@ public class HandyController extends MainController {
 			setSelectedItemDetails(smsHandy);
 			balanceTextField.setText("");
 		}
+	}
+
+	public void writeMessage() {
+		try {
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/message_form.fxml"));
+			AnchorPane pane = loader.load();
+			MessageFormController controller = loader.getController();
+			Stage stage = new Stage();
+			controller.stage = stage;
+			stage.setTitle("Write a Message");
+			stage.initModality(Modality.WINDOW_MODAL);
+			stage.initOwner(getPrimaryStage());
+			Scene scene = new Scene(pane);
+			stage.setScene(scene);
+			stage.showAndWait();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }

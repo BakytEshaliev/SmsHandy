@@ -89,7 +89,11 @@ public class DBinit {
 		return providers.stream().filter(e -> e.getName().equals(name)).findFirst().orElse(null);
 	}
 
-	public void addHandy(SmsHandy smsHandy){
+	public SmsHandy findSmsHandyByName(String name) {
+		return allHandy.stream().filter(e -> e.getName().equals(name)).findFirst().orElse(null);
+	}
+
+	public void addHandy(SmsHandy smsHandy) {
 		if (smsHandy instanceof TariffPlanSmsHandy) {
 			allTariffHandy.add((TariffPlanSmsHandy) smsHandy);
 		} else {
