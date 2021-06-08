@@ -8,14 +8,14 @@
    <children>
       <TabPane fx:id="tabPane" layoutX="56.0" layoutY="32.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
-          <Tab fx:id="providerTab" text="Provider">
-            <content>
-              <AnchorPane fx:id="providerTabContent" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
-          <Tab fx:id="handyTab" text="Handy">
-            <content>
-              <AnchorPane fx:id="handyTabContent" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            <Tab fx:id="handyTab" text="Handy">
+                <content>
+                    <fx:include fx:id="phones" source="phones.fxml" />
+                </content>
+            </Tab>
+            <Tab fx:id="providerTab" text="Provider">
+              <content>
+                <fx:include fx:id="providers" source="provider.fxml" />
             </content>
           </Tab>
         </tabs>

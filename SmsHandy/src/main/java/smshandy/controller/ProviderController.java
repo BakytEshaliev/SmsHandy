@@ -77,7 +77,7 @@ public class ProviderController extends MainController {
 	/**
 	 * Set all providers in the table.
 	 */
-	private void loadAllProviders() {
+	public void loadAllProviders() {
 		providerTable.setItems(FXCollections.observableArrayList(db.getAllProviders()));
 	}
 }

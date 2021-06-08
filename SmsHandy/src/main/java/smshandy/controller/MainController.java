@@ -11,61 +11,45 @@ import smshandy.Main;
 import java.io.IOException;
 
 public  class MainController {
-    Stage primaryStage;
-    Main main;
+    private Stage primaryStage;
+    private Main main;
     @FXML
-    TabPane tabPane;
-    @FXML
-    Tab providerTab;
-    @FXML
-    Tab handyTab;
+    private TabPane tabPane;
 
-    @FXML
-    AnchorPane providerTabContent;
-    @FXML
-    AnchorPane handyTabContent;
 
-    HandyController handyController;
-    ProviderController providerController;
+    @FXML private HandyController phonesController;
+    @FXML private ProviderController providersController;
 
     public void initialize() throws IOException {
-        handyTab.setContent(FXMLLoader.load(Main.class.getResource("view/phones.fxml")));
-        tabPane.getSelectionModel().select(handyTab);
         tabPane.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
-            switch (newValue.getId()){
-                case "handyTab":{
-
-                    try {
-                        handyTab.setContent(FXMLLoader.load(Main.class.getResource("view/phones.fxml")));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+            switch (newValue.getId()) {
+                case "handyTab":
+                    getPhonesController().loadAllPhones();
                     break;
-                }
-                case "providerTab":{
-                    try {
-                        providerTab.setContent(FXMLLoader.load(Main.class.getResource("view/provider.fxml")));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
+                case "providerTab":
+                    getProvidersController().loadAllProviders();
                     break;
-                }
             }
         }));
-
     }
-    @FXML
-    public void loadProvider(){
 
-    }
     public Stage getPrimaryStage() {
         return primaryStage;
+    }
+
+    public HandyController getPhonesController() {
+        return phonesController;
+    }
+
+    public ProviderController getProvidersController() {
+        return providersController;
     }
 
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
+
+
 
     public Main getMain() {
         return main;

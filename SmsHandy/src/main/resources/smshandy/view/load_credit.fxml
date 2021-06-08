@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<AnchorPane prefHeight="175.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smshandy.controller.LoadCreditController">
+   <children>
+      <Button onAction="#handleOk" layoutX="116.0" layoutY="136.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="OK" />
+      <Button onAction="#handleCancel" layoutX="190.0" layoutY="136.0" mnemonicParsing="false" text="Cancel" />
+      <Label layoutX="14.0" layoutY="66.0" prefHeight="25.0" prefWidth="102.0" text="Enter the amount" />
+      <TextField fx:id="amountTextField" layoutX="155.0" layoutY="66.0" />
+      <Label layoutX="135.0" layoutY="22.0" prefHeight="20.0" prefWidth="124.0" text="Loading the credit">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
