@@ -21,7 +21,7 @@ public class PrepaidSmsHandy extends SmsHandy{
      * @return new amount of credits
      */
     public boolean canSendSms() {
-        int credits = getProvider().getCreditForSMsHandy(getNumber());
+        int credits = getProvider() != null? getProvider().getCreditForSMsHandy(getNumber()) : 0;
         return credits - COST_PER_SMS >= 0;
     }
 
