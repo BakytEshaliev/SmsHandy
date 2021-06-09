@@ -68,7 +68,11 @@ public class HandyController extends MainController {
 		loadCreditButton.setDisable(handy.getProvider() == null);
 		sendSmsButton.setDisable(handy.getProvider() == null);
 	}
-
+	/**
+	 * Shows the details of a smshandy.
+	 *
+	 * @param handy the detailed handy
+	 */
 	private void setSelectedItemDetails(SmsHandy handy) {
 		if (handy != null) {
 			disableButtons(handy);
@@ -96,12 +100,15 @@ public class HandyController extends MainController {
 
 		}
 	}
-
+	
 	private String getArtHandy(SmsHandy smsHandy) {
 		return (smsHandy instanceof TariffPlanSmsHandy) ? "Tariff Plan" : "Prepaid Plan";
 	}
 
 	@FXML
+	/**
+	 * Deletes a phone.
+	 */
 	public void deletePhoneBtn() {
 
 		SmsHandy smsHandy = handyTable.getSelectionModel().getSelectedItem();
@@ -122,6 +129,9 @@ public class HandyController extends MainController {
 	}
 
 	@FXML
+	/**
+	 * Changes the provider of a handy.
+	 */
 	public void changeProviderBtn() {
 		SmsHandy smsHandy = handyTable.getSelectionModel().getSelectedItem();
 		if (smsHandy != null) {
@@ -135,11 +145,15 @@ public class HandyController extends MainController {
 			}
 		}
 	}
-
+	/**
+	 * Loads all handy in the table.
+	 */
 	public void loadAllPhones() {
 		handyTable.setItems(FXCollections.observableArrayList(db.getAllHandy()));
 	}
-
+	/**
+	 * Adds a new handy to the table.
+	 */
 	public void addHandyBtn() {
 		try {
 			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/handy_form.fxml"));
@@ -160,7 +174,9 @@ public class HandyController extends MainController {
 		}
 
 	}
-
+	/**
+	 * Sends a message to another handy.
+	 */
 	public void sendSms() {
 		SmsHandy smsHandy = handyTable.getSelectionModel().getSelectedItem();
 		if (smsHandy != null) {
@@ -192,7 +208,10 @@ public class HandyController extends MainController {
 		}
 
 	}
-
+	
+	/**
+	 * Recharges the balance of a handy.
+	 */
 	public void loadCredits() {
 		SmsHandy smsHandy = handyTable.getSelectionModel().getSelectedItem();
 		if (smsHandy != null) {
@@ -216,7 +235,10 @@ public class HandyController extends MainController {
 		}
 
 	}
-
+	
+	/**
+	 * Shows all received sms of a handy.
+	 */
 	public void showAllReceivedSms() {
 		SmsHandy smsHandy = handyTable.getSelectionModel().getSelectedItem();
 		if (smsHandy != null) {
@@ -239,7 +261,9 @@ public class HandyController extends MainController {
 			}
 		}
 	}
-
+	/**
+	 * Shows all sended sms of a handy.
+	 */
 	public void showAllSentSms() {
 		SmsHandy smsHandy = handyTable.getSelectionModel().getSelectedItem();
 		if (smsHandy != null) {
