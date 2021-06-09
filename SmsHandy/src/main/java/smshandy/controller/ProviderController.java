@@ -61,7 +61,7 @@ public class ProviderController extends MainController {
 
 	@FXML
 	/**
-	 * 
+	 * Adds a Provider to the table.
 	 */
 	public void addProviderBtn() {
 		try {
