@@ -1,10 +1,14 @@
 package smshandy.controller;
 
+import java.io.IOException;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
@@ -13,8 +17,6 @@ import javafx.stage.Stage;
 import smshandy.DBinit;
 import smshandy.Main;
 import smshandy.Provider;
-
-import java.io.IOException;
 
 public class ProviderController extends MainController {
 
@@ -28,6 +30,7 @@ public class ProviderController extends MainController {
 	/**
 	 * Initializes the controller class and initialize the provider table.
 	 */
+	@Override
 	public void initialize() {
 		loadAllProviders();
 		providerCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getName()));
@@ -40,11 +43,18 @@ public class ProviderController extends MainController {
 		Provider provider = providerTable.getSelectionModel().getSelectedItem();
 		// delete provider
 		// and set null to owners of provider
-		if (provider!=null) {
+		if (provider != null) {
 
 			provider.getSubscriber().forEach((k, v) -> v.deleteProvider());
 			db.getAllProviders().remove(provider);
 			loadAllProviders();
+		} else {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setHeaderText("Error!");
+			alert.setContentText("You must select a provider.");
+
+			alert.showAndWait();
 		}
 
 	}
