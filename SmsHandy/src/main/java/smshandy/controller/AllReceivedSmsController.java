@@ -11,6 +11,8 @@ import smshandy.DBinit;
 import smshandy.Message;
 import smshandy.SmsHandy;
 
+import java.text.SimpleDateFormat;
+
 public class AllReceivedSmsController {
     @FXML
     private TableView<Message> senderTable;
@@ -20,6 +22,8 @@ public class AllReceivedSmsController {
     private TextArea contentValTextArea;
     @FXML
     private Label dateValLabel;
+    @FXML
+    private Label senderNameValLabel;
 
 
     private SmsHandy phone;
@@ -33,11 +37,13 @@ public class AllReceivedSmsController {
     }
     private void setSelectedItemDetails(Message msg) {
         if (msg != null){
-            dateValLabel.setText(msg.getDate().toString());
+            dateValLabel.setText(new SimpleDateFormat("HH:mm:ss dd.MM.yyyy").format(msg.getDate()));
             contentValTextArea.setText(msg.getContent());
+            senderNameValLabel.setText(msg.getFrom());
         }else {
             dateValLabel.setText("");
             contentValTextArea.setText("");
+            senderNameValLabel.setText("");
         }
     }
     public void loadData(){

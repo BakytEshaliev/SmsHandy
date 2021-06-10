@@ -1,6 +1,7 @@
 package smshandy.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import smshandy.PrepaidSmsHandy;
 
@@ -26,6 +27,12 @@ public class LoadCreditController extends MainController{
                 phone.deposit(amountCredit);
                 getPrimaryStage().close();
             }
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error!");
+            alert.setContentText("The amount must be a positive integer and not empty ");
+            alert.showAndWait();
         }
     }
 

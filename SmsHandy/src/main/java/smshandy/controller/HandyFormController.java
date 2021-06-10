@@ -58,10 +58,12 @@ public class HandyFormController {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error");
 			alert.setHeaderText("Error!");
-			alert.setContentText("Values aren't valid" + "\n" + "name: " + nameTextField.getText() + "\n" + "number: "
-					+ numberTextField.getText() + "\n" + "number format: " + isValidNumber(numberTextField.getText())
-					+ "\n" + "provider: " + providerChoiceBox.getValue() + "\n" + "type: "
-					+ handyTypeChoiceBox.getValue());
+			alert.setContentText("Values aren't valid\n"+
+					"name: " + nameTextField.getText() + "\n" +
+					"number: " + numberTextField.getText() + "\n" +
+					"number format: " + isValidNumber(numberTextField.getText()) + "\n" +
+					"provider: " + providerChoiceBox.getValue() + "\n" +
+					"type: " + handyTypeChoiceBox.getValue());
 
 			alert.showAndWait();
 		}

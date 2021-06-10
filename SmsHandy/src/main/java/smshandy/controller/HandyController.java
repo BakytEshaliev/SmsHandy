@@ -1,6 +1,7 @@
 package smshandy.controller;
 
 import java.io.IOException;
+import java.util.stream.Collectors;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -17,11 +18,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import smshandy.DBinit;
-import smshandy.Main;
-import smshandy.PrepaidSmsHandy;
-import smshandy.SmsHandy;
-import smshandy.TariffPlanSmsHandy;
+import smshandy.*;
 
 public class HandyController extends MainController {
 
@@ -59,13 +56,11 @@ public class HandyController extends MainController {
 				.addListener((observable, oldValue, newValue) -> setSelectedItemDetails(newValue));
 		handyCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getName()));
 		artCol.setCellValueFactory(cell -> new SimpleStringProperty(getArtHandy(cell.getValue())));
-		providersCB.setValue("Providers");
-		db.getAllProviders().forEach(e -> providersCB.getItems().add(e.getName()));
+		providersCB.getItems().addAll(db.getAllProviders().stream().map(Provider::getName).collect(Collectors.toList()));
 	}
 
 	private void disableButtons(SmsHandy handy) {
-		loadCreditButton.setDisable(handy instanceof TariffPlanSmsHandy);
-		loadCreditButton.setDisable(handy.getProvider() == null);
+		loadCreditButton.setDisable(handy instanceof TariffPlanSmsHandy || handy.getProvider() == null);
 		sendSmsButton.setDisable(handy.getProvider() == null);
 	}
 
@@ -124,7 +119,7 @@ public class HandyController extends MainController {
 	@FXML
 	public void changeProviderBtn() {
 		SmsHandy smsHandy = handyTable.getSelectionModel().getSelectedItem();
-		if (smsHandy != null) {
+		if (smsHandy != null && providersCB.getValue() != null) {
 			try {
 				smsHandy.setProvider(db.findProviderByName(providersCB.getValue()));
 				setSelectedItemDetails(smsHandy);

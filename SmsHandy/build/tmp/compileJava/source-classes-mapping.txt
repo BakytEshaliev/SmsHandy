@@ -1,25 +1,25 @@
 smshandy/SmsHandy.java
  smshandy.SmsHandy
-smshandy/controller/HandyFormController.java
- smshandy.controller.HandyFormController
+smshandy/Main.java
+ smshandy.Main
 smshandy/DBinit.java
  smshandy.DBinit
 smshandy/TariffPlanSmsHandy.java
  smshandy.TariffPlanSmsHandy
-smshandy/controller/SendSmsController.java
- smshandy.controller.SendSmsController
+smshandy/Message.java
+ smshandy.Message
 smshandy/Provider.java
  smshandy.Provider
 smshandy/PrepaidSmsHandy.java
  smshandy.PrepaidSmsHandy
 module-info.java
  module-info
+smshandy/controller/HandyFormController.java
+ smshandy.controller.HandyFormController
+smshandy/controller/SendSmsController.java
+ smshandy.controller.SendSmsController
 smshandy/controller/AllReceivedSmsController.java
  smshandy.controller.AllReceivedSmsController
-smshandy/Message.java
- smshandy.Message
-smshandy/Main.java
- smshandy.Main
 smshandy/controller/AllSentSmsController.java
  smshandy.controller.AllSentSmsController
 smshandy/ProviderController.java
