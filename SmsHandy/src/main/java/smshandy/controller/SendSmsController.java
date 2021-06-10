@@ -39,12 +39,16 @@ public class SendSmsController {
 	public void initialize() {
 
 	}
-
+	/**
+	 * Add Data to the Choicebox.
+	 */
 	public void loadData() {
 		phonesChoiceBox.getItems().addAll(db.getAllHandy().stream().map(SmsHandy::getNumber)
 				.filter(p -> !p.equals(fromPhone.getNumber())).collect(Collectors.toList()));
 	}
-
+	/**
+	 * Send a Message with a animation to a receiver.
+	 */
 	public void handleSend() {
 		String number = phonesChoiceBox.getValue();
 		String content = smsContentTextArea.getText().trim();
@@ -57,7 +61,9 @@ public class SendSmsController {
 			parentStage.close();
 		}
 	}
-
+	/**
+	 * Close the dialog.
+	 */
 	public void handleCancel() {
 		parentStage.close();
 	}
@@ -69,7 +75,9 @@ public class SendSmsController {
 	public void setFromPhone(SmsHandy fromPhone) {
 		this.fromPhone = fromPhone;
 	}
-
+	/**
+	 * shows a animation 
+	 */
 	private void showAnimation() {
 
 		Circle circle = new Circle(20);

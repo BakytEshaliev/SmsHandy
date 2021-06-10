@@ -30,7 +30,10 @@ public class AllSentSmsController extends MainController{
     @FXML
     private Label recipientNameValLabel;
     private DBinit db = DBinit.getInstance();
-
+	
+	/**
+	 * Fills the table with data.
+	 */
     public void initialize(){
         dateValLabel.setText("");
         recipientCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getTo()));
@@ -39,6 +42,9 @@ public class AllSentSmsController extends MainController{
                 .addListener((observable, oldValue, newValue) -> setSelectedItemDetails(newValue));
     }
 
+	/**
+	 * Shows the details from the message.
+	 */
     private void setSelectedItemDetails(Message msg) {
         if (msg != null){
             dateValLabel.setText(new SimpleDateFormat("HH:mm:ss dd.MM.yyyy").format(msg.getDate()));
@@ -50,6 +56,10 @@ public class AllSentSmsController extends MainController{
             recipientNameValLabel.setText("");
         }
     }
+	
+	/**
+	 * Adds data to the to the sender table.
+	 */
     public void loadData(){
         recipientTable.setItems(FXCollections.observableArrayList(phone.getSent()));
 

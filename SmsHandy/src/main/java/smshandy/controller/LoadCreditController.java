@@ -15,9 +15,15 @@ public class LoadCreditController extends MainController{
     public void initialize(){
 
     }
+	/**
+	 * Close the dialog.
+	 */
     public void handleCancel(){
         getPrimaryStage().close();
     }
+	/**
+	 * Adds the amount of credits to the balance of the handy.
+	 */
     public void handleOk(){
         String amount = amountTextField.getText();
         boolean valid = !amount.isBlank() && amount.matches("\\d+");
@@ -35,7 +41,9 @@ public class LoadCreditController extends MainController{
             alert.showAndWait();
         }
     }
-
+    /**
+	 * Set a new Prepaid handy.
+	 */
     public void setPhone(PrepaidSmsHandy phone) {
         this.phone = phone;
     }

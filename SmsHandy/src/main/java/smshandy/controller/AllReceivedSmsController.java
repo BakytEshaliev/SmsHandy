@@ -25,9 +25,12 @@ public class AllReceivedSmsController {
     @FXML
     private Label senderNameValLabel;
 
-
     private SmsHandy phone;
     private DBinit db = DBinit.getInstance();
+	
+	/**
+	 * Fills the table with data.
+	 */
     public void initialize(){
         dateValLabel.setText("");
         senderCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getFrom()));
@@ -35,6 +38,10 @@ public class AllReceivedSmsController {
         senderTable.getSelectionModel().selectedItemProperty()
                 .addListener((observable, oldValue, newValue) -> setSelectedItemDetails(newValue));
     }
+	
+	/**
+	 * Shows the details from the message.
+	 */
     private void setSelectedItemDetails(Message msg) {
         if (msg != null){
             dateValLabel.setText(new SimpleDateFormat("HH:mm:ss dd.MM.yyyy").format(msg.getDate()));
@@ -46,6 +53,10 @@ public class AllReceivedSmsController {
             senderNameValLabel.setText("");
         }
     }
+	
+	/**
+	 * Adds data to the to the sender table.
+	 */
     public void loadData(){
        senderTable.setItems(FXCollections.observableArrayList(phone.getReceived()));
     }
