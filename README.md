@@ -1,4 +1,6 @@
-#SMS Handy
+# Attention
+Check commits to see real number of my commits
+# SMS Handy
 This is a CRUD application for mobile operators with the additional functionality of sending SMS, deducting money from the account, etc. The project was implemented with JavaFX during the Programming 2 class at WHZ as a group project.
 
 ![main](https://user-images.githubusercontent.com/39187339/126872743-8e4c7315-9c3b-476d-b78e-f5803e44d280.png)
